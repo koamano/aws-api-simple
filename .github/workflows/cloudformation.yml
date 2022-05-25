@@ -92,6 +92,6 @@ jobs:
       - name: Deploy to AWS CloudFormation
         uses: aws-actions/aws-cloudformation-github-deploy@v1
         with:
-          name: cloudformation demo
+          name: cloudformation-demo
           template: artifact/deployment.yaml
           parameter-overrides: "Environment=Sandboxx"
