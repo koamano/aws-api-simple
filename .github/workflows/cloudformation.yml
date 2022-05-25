@@ -27,7 +27,19 @@ jobs:
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: 6.0.x
-          
+      
+      - name: step 2 - Add artifacts to publish to the temp folder
+        run: |
+          mkdir artifact
+          cd artifact
+          mkdir publish
+          cd publish
+          echo 'alpha'    > alpha.html
+          echo 'bravo'    > bravo.html
+          echo 'charlie'  > charlie.html
+          cd ..
+          cd ..
+      
       - name: Publish
         run: dotnet Publish --no-self-contained --runtime linux-x64 --configuration Release --output ./artifact/publish ./src/aws-api-simple/aws-api-simple.csproj
       
