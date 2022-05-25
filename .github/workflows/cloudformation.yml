@@ -33,6 +33,9 @@ jobs:
       
       - name: Install zip
         uses: montudor/action-zip@v1
+        
+      - name: debug
+        run : echo echo "$PWD"
       
       - name: Zip output
         run: zip -qq -r ../lambda.zip . 
