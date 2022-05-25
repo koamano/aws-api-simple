@@ -32,7 +32,7 @@ jobs:
         run: dotnet Publish --no-self-contained --runtime linux-x64 --configuration Release --output ./artifact/publish ./src/aws-api-simple/aws-api-simple.csproj
       
       - name: Install zip
-        uses: montudor/actions-zip@v1
+        uses: montudor/action-zip@v1
       
       - name: Zip output
         run: zip -qq -r ../lambda.zip . 
