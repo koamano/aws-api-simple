@@ -39,9 +39,6 @@ jobs:
         
       - name: Copy Cloudformation Template
         run: cp ./deployment.yaml ./artifact/deployment.yaml
-     
-      - name: Try to fail
-        run: exit 1
       
       - uses: actions/upload-artifact@v3
         with:
