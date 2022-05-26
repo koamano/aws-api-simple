@@ -1,0 +1,46 @@
+name: pr build
+
+on:
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      - name: Setup .Net
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 6.0.x
+      
+      - name: Publish
+        run: dotnet publish --no-self-contained --runtime linux-x64 --configuration Release --output ./artifact/publish ./src/aws-api-simple/aws-api-simple.csproj
+      
+      - name: Install zip
+        uses: montudor/action-zip@v1
+        
+      - name: debug
+        run : echo echo "$PWD"
+      
+      - name: Zip output
+        run: zip -qq -r ../lambda.zip . 
+        working-directory: artifact/publish
+        
+      - name: Copy Cloudformation Template
+        run: cp ./deployment.yaml ./artifact/deployment.yaml
+      
+      - uses: actions/upload-artifact@v3
+        with:
+          name: lambda
+          path: ./artifact
