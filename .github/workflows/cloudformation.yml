@@ -92,6 +92,31 @@ jobs:
       - name: Deploy to AWS CloudFormation
         uses: aws-actions/aws-cloudformation-github-deploy@v1
         with:
-          name: cloudformation-demo
+          name: cloudformation-sandbox
           template: artifact/deployment.yaml
-          parameter-overrides: "Environment=Sandboxx"
+          parameter-overrides: "Environment=Sandbox"
+          
+  nonprod-deploy:
+    runs-on: ubuntu-latest
+    environment: nonprod
+    needs: [build, sandbox-deploy]
+    
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: lambda
+          path: artifact
+          
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-2   
+    
+      - name: Deploy to AWS CloudFormation
+        uses: aws-actions/aws-cloudformation-github-deploy@v1
+        with:
+          name: cloudformation-nonprod
+          template: artifact/deployment.yaml
+          parameter-overrides: "Environment=nonprod"       
