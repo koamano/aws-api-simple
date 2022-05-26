@@ -53,7 +53,7 @@ public class Function
         }
         catch(Exception e)
         {
-            context.Logger.LogInformation($"Error getting object {s3Event.Object.Key} from bucket {s3Event.Bucket.Name}. Make sure they exist and your bucket is in the same region as this function.");
+            context.Logger.LogInformation($"Error getting object {s3Event.Object.Key} from the bucket {s3Event.Bucket.Name}. Make sure they exist and your bucket is in the same region as this function.");
             context.Logger.LogInformation(e.Message);
             context.Logger.LogInformation(e.StackTrace);
             throw;
