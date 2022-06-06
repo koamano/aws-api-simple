@@ -90,7 +90,7 @@ jobs:
       - name: Deploy to AWS CloudFormation
         uses: aws-actions/aws-cloudformation-github-deploy@v1
         with:
-          name: cloudformation-sandbox
+          name: cloudformation-man-sandbox
           template: artifact/deployment.yaml
           parameter-overrides: "Environment=Sandbox"
           
