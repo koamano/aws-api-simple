@@ -9,6 +9,7 @@ Parameters:
 Resources: 
   lambdaFunctionIamRole:
     Type: AWS::IAM::Role
+    DeletionPolicy: Retain
     Properties:
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
@@ -31,9 +32,11 @@ Resources:
 
   lambdaFunction:
     Type: AWS::Lambda::Function
+    DeletionPolicy: Retain
     Properties:
       Description: "cloudformation sample lambda"
-      FunctionName: !Sub sample-lambda-${Environment}
+      #FunctionName: !Sub sample-lambda-${Environment}
+      FunctionName: sample-lambda-tf
       Handler: aws-api-simple::aws_api_simple.Function::FunctionHandler
       MemorySize: 128
       Role: !GetAtt lambdaFunctionIamRole.Arn
@@ -48,3 +51,5 @@ Resources:
       Tags:
         - Key: keyname
           Value: value
+        - Key: keyname2
+          Value: value2  
