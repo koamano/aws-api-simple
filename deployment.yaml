@@ -21,7 +21,6 @@ Resources:
       #ManagedPolicyArns:
        # - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole      
       Policies:
-        - PolicyName: AWSLambdaBasicExecutionRole
         - PolicyName: "simple-lambda-policy"
           PolicyDocument:
             Version: "2012-10-17"
