@@ -18,8 +18,10 @@ Resources:
             Principal:
               Service: lambda.amazonaws.com
             Action: sts:AssumeRole 
-      Policies:
-        - PolicyName: AWSLambdaBasicExecutionRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole      
+      # Policies:
+      #   - PolicyName: AWSLambdaBasicExecutionRole
         # - PolicyName: "simple-lambda-policy"
         #   PolicyDocument:
         #     Version: "2012-10-17"
