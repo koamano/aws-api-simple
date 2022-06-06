@@ -7,7 +7,7 @@ Parameters:
     Type: String
 
 Resources: 
-  terraform_function_role:
+  lambdaFunctionIamRole:
     Type: AWS::IAM::Role
     DeletionPolicy: Retain
     Properties:
