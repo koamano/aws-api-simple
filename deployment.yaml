@@ -18,19 +18,19 @@ Resources:
             Principal:
               Service: lambda.amazonaws.com
             Action: sts:AssumeRole 
-      ManagedPolicyArns:
-       - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole      
-      # Policies:
-      #   - PolicyName: "simple-lambda-policy"
-      #     PolicyDocument:
-      #       Version: "2012-10-17"
-      #       Statement:
-      #         - Effect: "Allow"
-      #           Action:
-      #             - "logs:CreateLogGroup"
-      #             - "logs:CreateLogStream"
-      #             - "logs:PutLogEvents"
-      #           Resource: "*"
+      # ManagedPolicyArns:
+      #  - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole      
+      Policies:
+        - PolicyName: "simple-lambda-policy"
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: "Allow"
+                Action:
+                  - "logs:CreateLogGroup"
+                  - "logs:CreateLogStream"
+                  - "logs:PutLogEvents"
+                Resource: "*"
 
   lambdaFunction:
     Type: AWS::Lambda::Function
@@ -53,5 +53,5 @@ Resources:
       Tags:
         - Key: keyname
           Value: value
-        - Key: keyname2
-          Value: value2  
+        - Key: keynametest
+          Value: valuetest
