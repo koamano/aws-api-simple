@@ -7,7 +7,7 @@ Parameters:
     Type: String
 
 Resources: 
-  lambdaFunctionIamRole:
+  terraform_function_role:
     Type: AWS::IAM::Role
     DeletionPolicy: Retain
     Properties:
@@ -19,16 +19,17 @@ Resources:
               Service: lambda.amazonaws.com
             Action: sts:AssumeRole 
       Policies:
-        - PolicyName: "simple-lambda-policy"
-          PolicyDocument:
-            Version: "2012-10-17"
-            Statement:
-              - Effect: "Allow"
-                Action:
-                  - "logs:CreateLogGroup"
-                  - "logs:CreateLogStream"
-                  - "logs:PutLogEvents"
-                Resource: "*"
+        - PolicyName: AWSLambdaBasicExecutionRole
+        # - PolicyName: "simple-lambda-policy"
+        #   PolicyDocument:
+        #     Version: "2012-10-17"
+        #     Statement:
+        #       - Effect: "Allow"
+        #         Action:
+        #           - "logs:CreateLogGroup"
+        #           - "logs:CreateLogStream"
+        #           - "logs:PutLogEvents"
+        #         Resource: "*"
 
   lambdaFunction:
     Type: AWS::Lambda::Function
