@@ -54,4 +54,4 @@ Resources:
         - Key: keyname
           Value: value
         - Key: VPCValue
-          Value: { "Fn::ImportValue" : {"Fn::Sub": "vpcSample-VPCId" } }
+          Value: { "Fn::ImportValue" : {"Fn::Sub": "vpcSample-VPCID" } }
