@@ -54,4 +54,4 @@ Resources:
         - Key: keyname
           Value: value
         - Key: VPCValue
-          Value: vpcSample-VPCID
+          Value: !Sub '${vpcSample-VPCID}'
