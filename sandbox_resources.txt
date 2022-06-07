@@ -1,0 +1,16 @@
+[
+   {
+      "ResourceType":"AWS::Lambda::Function",
+      "LogicalResourceId":"lambdaFunction",
+      "ResourceIdentifier":{
+         "FunctionName": "sample-lambda-tf"
+      }
+   },
+   {
+      "ResourceType":"AWS::IAM::Role",
+      "LogicalResourceId":"lambdaFunctionIamRole",
+      "ResourceIdentifier":{
+         "RoleName": "terraform_function_role"
+      }
+   }
+]
