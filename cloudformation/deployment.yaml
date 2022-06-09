@@ -55,3 +55,12 @@ Resources:
           Value: value
         - Key: VPCValue
           Value: { "Fn::ImportValue" : {"Fn::Sub": "vpcSample-VPCID" } }
+
+Outputs:
+  lambdaFunctionsValue:
+    Description: Lambda Function Info
+    Value:
+      Ref: lambdaFunction
+    Export:
+      Name:
+        Fn::Sub: "${AWS::StackName}-lambdaFunctionsValue"   
